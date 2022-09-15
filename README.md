@@ -38,18 +38,20 @@ Comment on how you would improve the API implementation and then we'll dive into
 
 Feel free to ask questions and have exploratory discussions as you go along.
 
-## 3️⃣ Installation
+## 3️⃣ Getting started
 
 ```bash
 # install dependencies
 $ npm install
 
 # run the app in development mode
-$ npm run start:dev
+$ npm run start:dev # app should run at http://localhost:3000/
 
 # to check errors with compilation, run
 $ npm run build
 ```
+
+**API Documentation:** http://localhost:3000/api/
 
 ## 4️⃣ Lastly, some advice
 

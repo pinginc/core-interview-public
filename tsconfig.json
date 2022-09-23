@@ -1,21 +1,60 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "es2017",
-    "sourceMap": true,
-    "outDir": "./dist",
-    "baseUrl": "./",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "noImplicitAny": false,
-    "strictBindCallApply": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true
-  }
+    "compilerOptions": {
+        // type checking
+        "allowUnusedLabels": false,
+        "allowUnreachableCode": false,
+        "alwaysStrict": true,
+        "exactOptionalPropertyTypes": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noUncheckedIndexedAccess": true,
+        "noUnusedLocals": true,
+        "strict": true,
+        "strictBindCallApply": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": false,
+        "useUnknownInCatchVariables": true,
+
+        // modules
+        "baseUrl": "./",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "typeRoots": ["node_modules/@types"],
+        "types": ["reflect-metadata", "node", "jest"],
+
+        // emit
+        "declaration": true,
+        "noEmitOnError": true,
+        "outDir": "./dist",
+        "removeComments": true,
+        "sourceMap": true,
+
+        // javascript support
+        "allowJs": false,
+
+        // interop constraints
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+
+        // language and environment
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es2022"],
+        "target": "es2022",
+
+        // projects
+        "incremental": true,
+
+        // completeness
+        "skipLibCheck": true
+    },
+    "exclude": ["node_modules"],
+    "include": ["src/**/*.ts"]
 }

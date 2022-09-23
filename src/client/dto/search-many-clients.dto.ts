@@ -6,14 +6,18 @@
  * infringer thereof to severe legal liability.
  */
 
-import { Module } from '@nestjs/common';
+import { Transform } from 'class-transformer';
+import { IsInt, IsOptional, IsString, Max, Min, MinLength } from 'class-validator';
 
-import { ClientModule } from './client/client.module';
-import { ConfigModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
-import { HealthModule } from './health/health.module';
+export class SearchManyClientsDto {
+    @IsString()
+    @MinLength(2)
+    search: string;
 
-@Module({
-    imports: [ClientModule, ConfigModule.forRoot(), DatabaseModule.forRoot(), HealthModule],
-})
-export class AppModule {}
+    @IsInt()
+    @Min(1)
+    @Max(50)
+    @Transform(({ value }) => parseInt(value, 10))
+    @IsOptional()
+    limit?: number | undefined;
+}

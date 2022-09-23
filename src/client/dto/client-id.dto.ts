@@ -6,14 +6,15 @@
  * infringer thereof to severe legal liability.
  */
 
-import { Module } from '@nestjs/common';
+import { Transform, Type } from 'class-transformer';
+import { ObjectId } from 'mongodb';
 
-import { ClientModule } from './client/client.module';
-import { ConfigModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
-import { HealthModule } from './health/health.module';
+import { ObjectIdTransform } from '../../transform/object-id-transform';
+import { IsObjectId } from '../../validate/is-object-id';
 
-@Module({
-    imports: [ClientModule, ConfigModule.forRoot(), DatabaseModule.forRoot(), HealthModule],
-})
-export class AppModule {}
+export class ClientIdDto {
+    @IsObjectId()
+    @Transform(ObjectIdTransform)
+    @Type(() => ObjectId)
+    clientId: ObjectId;
+}

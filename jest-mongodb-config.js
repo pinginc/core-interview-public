@@ -6,14 +6,15 @@
  * infringer thereof to severe legal liability.
  */
 
-import { Module } from '@nestjs/common';
-
-import { ClientModule } from './client/client.module';
-import { ConfigModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
-import { HealthModule } from './health/health.module';
-
-@Module({
-    imports: [ClientModule, ConfigModule.forRoot(), DatabaseModule.forRoot(), HealthModule],
-})
-export class AppModule {}
+module.exports = {
+    mongodbMemoryServerOptions: {
+        autoStart: false,
+        binary: {
+            skipMD5: true,
+            version: '5.0.10',
+        },
+        instance: {},
+    },
+    mongoURLEnvName: 'MONGO_URI',
+    useSharedDBForAllJestWorkers: false,
+};

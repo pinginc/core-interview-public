@@ -1,0 +1,103 @@
+{
+    "env": {
+        "es6": true,
+        "node": true,
+        "mongo": true,
+        "jest": true
+    },
+    "extends": ["plugin:@typescript-eslint/recommended", "prettier", "plugin:prettier/recommended"],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "overrides": [
+        {
+            "files": ["./res/license-header.js"],
+            "rules": {
+                "license-header/header": "off"
+            }
+        },
+        {
+            "files": ["./src/**/*.spec.ts"],
+            "rules": {
+                "no-console": "off"
+            }
+        }
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2019,
+        "sourceType": "module"
+    },
+    "plugins": ["header", "import", "simple-import-sort", "sort-keys-fix"],
+    "rules": {
+        "@typescript-eslint/ban-types": "warn",
+        "@typescript-eslint/no-empty-function": "warn",
+        "@typescript-eslint/no-parameter-properties": "off",
+        "arrow-body-style": "error",
+        "arrow-spacing": "error",
+        "camelcase": "error",
+        "class-methods-use-this": "error",
+        "default-param-last": "warn",
+        "header/header": ["error", "./res/license-header.js"],
+        // "implicit-arrow-linebreak": "warn", // this is already handled by line-width auto-fix
+        "import/first": "error",
+        "import/newline-after-import": "error",
+        "import/no-duplicates": "error",
+        // "no-confusing-arrow": "error",
+        "no-console": "error",
+        "no-const-assign": "error",
+        "no-new-func": "error",
+        "no-new-object": "error",
+        "no-new-wrappers": "error",
+        "no-param-reassign": "error",
+        "no-prototype-builtins": "error",
+        "no-underscore-dangle": [
+            "error",
+            {
+                "allow": ["_id"]
+            }
+        ],
+        "no-useless-constructor": "off",
+        "@typescript-eslint/no-useless-constructor": ["error"],
+        "no-var": "error",
+        "object-shorthand": "error",
+        "prefer-arrow-callback": "warn",
+        "prefer-const": "error",
+        "prefer-destructuring": "warn",
+        "prefer-object-spread": "warn",
+        "prefer-rest-params": "error",
+        "prefer-spread": "warn",
+        "prettier/comma-dangle": [
+            "off",
+            {
+                "arrays": "always-multiline",
+                "exports": "never",
+                "functions": "never",
+                "imports": "never",
+                "objects": "always-multiline"
+            }
+        ],
+        "radix": "error",
+        "simple-import-sort/exports": "error",
+        "simple-import-sort/imports": "error",
+        "sort-keys": [
+            "error",
+            "asc",
+            {
+                "caseSensitive": false,
+                "minKeys": 2,
+                "natural": true
+            }
+        ],
+        "sort-keys-fix/sort-keys-fix": [
+            "error",
+            "asc",
+            {
+                "caseSensitive": false,
+                "natural": true
+            }
+        ],
+        "wrap-iife": "error"
+    }
+}

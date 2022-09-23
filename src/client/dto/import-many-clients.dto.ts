@@ -6,14 +6,14 @@
  * infringer thereof to severe legal liability.
  */
 
-import { Module } from '@nestjs/common';
+import { Type } from 'class-transformer';
+import { ValidateNested } from 'class-validator';
 
-import { ClientModule } from './client/client.module';
-import { ConfigModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
-import { HealthModule } from './health/health.module';
+import { ImportOneClientDto } from './import-one-client.dto';
 
-@Module({
-    imports: [ClientModule, ConfigModule.forRoot(), DatabaseModule.forRoot(), HealthModule],
-})
-export class AppModule {}
+export class ImportManyClientsDto {
+    /** clients to import */
+    @ValidateNested({ each: true })
+    @Type(() => ImportOneClientDto)
+    clients: ImportOneClientDto[];
+}

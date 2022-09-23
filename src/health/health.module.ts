@@ -8,12 +8,11 @@
 
 import { Module } from '@nestjs/common';
 
-import { ClientModule } from './client/client.module';
-import { ConfigModule } from './config/config.module';
-import { DatabaseModule } from './database/database.module';
-import { HealthModule } from './health/health.module';
+import { HealthController } from './health.controller';
+import { HealthService } from './health.service';
 
 @Module({
-    imports: [ClientModule, ConfigModule.forRoot(), DatabaseModule.forRoot(), HealthModule],
+    controllers: [HealthController],
+    providers: [HealthService],
 })
-export class AppModule {}
+export class HealthModule {}

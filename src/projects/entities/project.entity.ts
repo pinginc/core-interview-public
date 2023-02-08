@@ -1,10 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import { IsString } from 'class-validator';
-import { IsObjectId } from 'class-validator-mongo-object-id';
 import { ObjectId } from 'mongodb';
 
 export class Project {
-  @IsObjectId()
+  @Type(() => ObjectId)
   @ApiProperty()
   id: ObjectId;
 
@@ -12,7 +12,6 @@ export class Project {
   @ApiProperty()
   description: string;
 
-  @IsObjectId()
   @ApiProperty()
   client: ObjectId;
 }

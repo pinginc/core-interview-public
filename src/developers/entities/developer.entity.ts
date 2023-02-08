@@ -1,11 +1,10 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'mongodb';
-import { IsString, ValidateNested } from 'class-validator';
-import { IsObjectId } from 'class-validator-mongo-object-id';
+import { IsString, Validate, ValidateNested } from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class Developer {
-  @IsObjectId()
+  @Type(() => ObjectId)
   id: ObjectId;
 
   @IsString()

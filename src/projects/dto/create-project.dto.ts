@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
 import { IsBoolean } from 'class-validator';
-import { IsObjectId } from 'class-validator-mongo-object-id';
 import { ObjectId } from 'mongodb';
 
 export class CreateProjectDto {
@@ -8,7 +8,7 @@ export class CreateProjectDto {
   @ApiProperty()
   description: boolean;
 
-  @IsObjectId()
+  @Type(() => ObjectId)
   @ApiProperty()
   clientId: ObjectId;
 }

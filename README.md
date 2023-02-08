@@ -1,4 +1,4 @@
-# Time By Ping's NestJS exercise
+# Laurel's NestJS exercise
 
 ## 1️⃣ Description
 
@@ -45,7 +45,7 @@ Feel free to ask questions and have exploratory discussions as you go along.
 $ npm install
 
 # run the app in development mode
-$ npm run start:dev # app should run at http://localhost:3000/
+$ npm run start # app should run at http://localhost:3000/
 
 # to check errors with compilation, run
 $ npm run build

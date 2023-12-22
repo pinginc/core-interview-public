@@ -23,9 +23,9 @@
     "@timebyping/eslint-config": "^1.2.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
-    "deep-equal": "^2.0.5",
+    "deep-equal": "^2.2.3",
     "mongodb": "^6.3.0",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.2.1",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0"
   },

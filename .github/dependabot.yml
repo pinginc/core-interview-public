@@ -1,0 +1,36 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase
+    schedule:
+      interval: "weekly"
+    groups:
+      dev:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+      prod:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      nest:
+        patterns:
+          - "@nestjs/*"
+        update-types:
+          - "major"
+      eslint:
+        patterns:
+          - "eslint*"
+          - "@typescript-eslint*"
+        update-types:
+          - "major"
+      typescript:
+        patterns:
+          - "ts*"
+          - "typescrip*"
+        update-types:
+          - "major"

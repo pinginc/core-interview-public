@@ -1,9 +1,16 @@
-import { Injectable } from '@nestjs/common';
-import { ObjectId } from 'mongodb';
-import equal from 'deep-equal';
+/* Copyright © Time By Ping, Inc. 2023. All rights reserved.
+ *
+ * Any unauthorized reproduction, distribution, public display, public
+ * performance or derivatization thereof can constitute, among other things, an
+ * infringement of Time By Ping Inc.’s exclusive rights under the Copyright Law
+ * of the U.S. (17 U.S.C. § 106) and may subject the infringer thereof to
+ * severe legal liability.*/
+import { existsSync, writeFileSync } from 'fs';
 import * as path from 'path';
 
-import { existsSync, writeFileSync } from 'fs';
+import { Injectable } from '@nestjs/common';
+import equal from 'deep-equal';
+import { ObjectId } from 'mongodb';
 
 export enum Collections {
   Clients = 'clients',
@@ -15,10 +22,7 @@ export enum Collections {
 type Id = string | ObjectId;
 type Item<T> = T & { id: Id };
 
-const persistedStorePath = path.resolve(
-  __dirname,
-  '../../persisted-store.json',
-);
+const persistedStorePath = path.resolve(__dirname, '../../persisted-store.json');
 
 @Injectable()
 export class StoreService {
@@ -45,11 +49,7 @@ export class StoreService {
     global.store = this;
   }
   private updatePersistedStore() {
-    writeFileSync(
-      persistedStorePath,
-      JSON.stringify(global.store.collections),
-      { encoding: 'utf-8', flag: 'w' },
-    );
+    writeFileSync(persistedStorePath, JSON.stringify(global.store.collections), { encoding: 'utf-8', flag: 'w' });
   }
 
   insert<T>(collection: Collections, data: T) {
@@ -64,15 +64,10 @@ export class StoreService {
 
   findOne<T>(collection: Collections, id: Id) {
     const idStr = id.toString();
-    return global.store.collections[collection].find(
-      (item: Item<T>) => item.id.toString() === idStr,
-    );
+    return global.store.collections[collection].find((item: Item<T>) => item.id.toString() === idStr);
   }
 
-  find_many<T>(
-    collection: Collections,
-    filter: { [property: string]: unknown },
-  ) {
+  find_many<T>(collection: Collections, filter: { [property: string]: unknown }) {
     return global.store.collections[collection].filter((item: T) => {
       let match = true; // what if we start by assuming we have a match?
       const filterProps = Object.keys(filter);
@@ -89,15 +84,11 @@ export class StoreService {
 
   DeleteOne<T>(collection: Collections, id: Id) {
     const idStr = id.toString();
-    const index = global.store.collections[collection].findIndex(
-      (item: Item<T>) => item.id.toString() === idStr,
-    );
+    const index = global.store.collections[collection].findIndex((item: Item<T>) => item.id.toString() === idStr);
 
     if (index >= 0) {
       const itemToDelete = global.store.collections[collection][index];
-      global.store.collections[collection] = global.store.collections[
-        collection
-      ].splice(index, 1);
+      global.store.collections[collection] = global.store.collections[collection].splice(index, 1);
       this.updatePersistedStore();
       return itemToDelete;
     }
